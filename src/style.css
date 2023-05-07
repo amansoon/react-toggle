@@ -1,0 +1,82 @@
+body {
+  padding: 100px 400px;
+}
+
+.toggle {
+  --track-width: 100px;
+  --track-height: 50px;
+
+  --thumb-width: 30px;
+
+  position: relative;
+  border-radius: 99em;
+
+  display: inline-flex;
+  padding: 0.5rem;
+  user-select: none;
+
+  cursor: pointer;
+
+  transition: all 200ms ease-out;
+}
+
+.toggle--disabled {
+  cursor: no-drop;
+  background-color: rgb(198, 198, 198);
+  opacity: 0.5;
+}
+
+.toggle--unchecked {
+  background-color: rgb(232, 232, 232);
+}
+.toggle--checked {
+  background-color: red;
+}
+
+.toggle--checked:not(.toggle--disabled):hover {
+  background-color: rgb(234, 0, 0);
+}
+
+.toggle--unchecked:not(.toggle--disabled):hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.toggle-track {
+  width: var(--track-width);
+  height: var(--track-height);
+  border-radius: 99em;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+
+  width: 0;
+  height: 0;
+  overflow: hidden;
+
+  opacity: 0;
+  background: transparent;
+}
+
+.toggle-thumb {
+  position: absolute;
+  height: var(--track-height);
+  width: var(--track-height);
+  border-radius: 99em;
+  transition: all 200ms ease-out;
+}
+
+.toggle--has-focus .toggle-thumb {
+  background-color: red;
+}
+
+.toggle-thumb--unchecked {
+  background-color: rgb(124, 124, 124);
+  transform: translateX(0);
+}
+.toggle-thumb--checked {
+  background-color: rgb(255, 255, 255);
+  transform: translateX(calc(var(--track-width) - var(--track-height)));
+}
